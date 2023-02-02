@@ -13,7 +13,7 @@ public class Alumno {
     private String primerApellidoAlumno;
     private String segundoApellidoAlumno;
     private Integer edad;
-    private Float notaMedia;
+    private float notaMedia;
 
     public Alumno() {
     }

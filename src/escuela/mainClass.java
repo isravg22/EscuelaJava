@@ -155,11 +155,58 @@ public class mainClass {
         }
     }
     
-    public static void EliminarAlumno(){
+    public static void EliminarAlumnos(){
         Scanner sc=new Scanner(System.in);
+        System.out.println("Que alumnos de que clase quieres eliminar");
+        String nombreClase=sc.nextLine();
         
         
+        for (int i = 0; i < allClase.size(); i++) {
+            if(nombreClase.equals(allClase.get(i).getNombreClase())){
+                String respuesta=sc.nextLine();
+                if(respuesta.toLowerCase().equals("si")){                    
+                    allClase.get(i).getAlumnos().removeAll(allClase.get(i).getAlumnos());
+                }else{
+                    System.out.println("Lo siento no lo puedo borrar");
+                }
+            }
+        }
     }
+    
+    public static void AlumnosMNotaCo(float nMedia){
+        float mayor=0f;
+        for (int i = 0; i < allClase.size(); i++) {
+            if(i==0){
+                mayor=allClase.get(i).getAlumnos().get(i).getNotaMedia();                
+            }else{
+                if(allClase.get(i).getAlumnos().get(i).getNotaMedia()>=mayor){
+                    System.out.println("El alumno: "+allClase.get(i).getAlumnos()+" con una nota mayor o igual a la dada con una nota de: " + allClase.get(i).getAlumnos().get(i).getNotaMedia());
+                    mayor=allClase.get(i).getAlumnos().get(i).getNotaMedia();    
+                }
+            }            
+        }
+    }
+    
+    public static void AlumnosMNotaCa(String nombreClase,float nMedia){
+        float mayor=0f;
+        
+        for (int i = 0; i < allClase.size(); i++) {
+            if(i==0){
+                if(nombreClase.equals(allClase.get(i).getNombreClase())){                    
+                    mayor=allClase.get(i).getAlumnos().get(i).getNotaMedia();     
+                }           
+            }else{
+                if(nombreClase.equals(allClase.get(i).getNombreClase())){                    
+                    if(allClase.get(i).getAlumnos().get(i).getNotaMedia()>=mayor){
+                        System.out.println("El alumno: "+allClase.get(i).getAlumnos()+"de la clase: "+allClase.get(i).getNombreClase()+" con una nota mayor o igual a la dada con una nota de: " + allClase.get(i).getAlumnos().get(i).getNotaMedia());
+                        mayor=allClase.get(i).getAlumnos().get(i).getNotaMedia();    
+                    }   
+                }
+            }            
+        }
+    }
+    
+    
     
     public static void main(String[] args) {
         
